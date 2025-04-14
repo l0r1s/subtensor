@@ -85,7 +85,9 @@ mod hooks {
                 // Set last emission block number for all existed subnets before start call feature applied
                 .saturating_add(migrations::migrate_set_first_emission_block_number::migrate_set_first_emission_block_number::<T>())
                 // Remove all zero value entries in TotalHotkeyAlpha
-                .saturating_add(migrations::migrate_remove_zero_total_hotkey_alpha::migrate_remove_zero_total_hotkey_alpha::<T>());
+                .saturating_add(migrations::migrate_remove_zero_total_hotkey_alpha::migrate_remove_zero_total_hotkey_alpha::<T>())
+                // Remove all entries in TotalHotkeyColdkeyStakesThisInterval
+                .saturating_add(migrations::migrate_remove_total_hotkey_coldkey_stakes_this_interval::migrate_remove_total_hotkey_coldkey_stakes_this_interval::<T>());
             weight
         }
 
